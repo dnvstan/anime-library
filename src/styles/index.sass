@@ -1,18 +1,47 @@
 *, *::before, *::after
 	box-sizing: border-box
 
-html, body
-	padding: 0
+html
+	min-height: 100%
+
+body
+	min-height: 100vh
 	margin: 0
-	height: 100%
 
 #app
-	height: 100%
-	font-family: sans-serif
+	min-height: 100vh
+	font-family: 'Fredoka-Regular', sans-serif
+
+h1
+	font-family: 'Fredoka-Bold', sans-serif
+
+h2, h3, h4, h5, h6
+	font-family: 'Fredoka-SemiBold', sans-serif
 
 @font-face
-	font-family: "Akaya-Telivigala"
+	font-family: "Fredoka-Light"
+	font-weight: 300
+	font-style: normal
+	font-display: swap
+	src: url("../../public/fonts/Fredoka/Fredoka-Light.woff2") format("woff2"), url("../../public/fonts/Fredoka/Fredoka-Light.woff") format("woff"), url("../../public/fonts/Fredoka/Fredoka-Light.ttf") format("ttf")
+
+@font-face
+	font-family: "Fredoka-Regular"
 	font-weight: 400
 	font-style: normal
 	font-display: swap
-	src: url("../../public/fonts/Akaya_Telivigala/AkayaTelivigala-Regular.woff2") format("woff2"), url("../../public/fonts/Akaya_Telivigala/AkayaTelivigala-Regular.woff") format("woff"), url("../../public/fonts/Akaya_Telivigala/AkayaTelivigala-Regular.ttf") format("ttf")
+	src: url("../../public/fonts/Fredoka/Fredoka-Regular.woff2") format("woff2"), url("../../public/fonts/Fredoka/Fredoka-Regular.woff") format("woff"), url("../../public/fonts/Fredoka/Fredoka-Regular.ttf") format("ttf")
+
+@font-face
+	font-family: "Fredoka-SemiBold"
+	font-weight: 600
+	font-style: normal
+	font-display: swap
+	src: url("../../public/fonts/Fredoka/Fredoka-SemiBold.woff2") format("woff2"), url("../../public/fonts/Fredoka/Fredoka-SemiBold.woff") format("woff"), url("../../public/fonts/Fredoka/Fredoka-SemiBold.ttf") format("ttf")
+
+@font-face
+	font-family: "Fredoka-Bold"
+	font-weight: 700
+	font-style: normal
+	font-display: swap
+	src: url("../../public/fonts/Fredoka/Fredoka-Bold.woff2") format("woff2"), url("../../public/fonts/Fredoka/Fredoka-Bold.woff") format("woff"), url("../../public/fonts/Fredoka/Fredoka-Bold.ttf") format("ttf")

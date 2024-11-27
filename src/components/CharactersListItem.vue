@@ -1,5 +1,5 @@
 <template>
-	<li class="character">
+	<li class="character" v-show="char">
 		<router-link
 			class="character__link"
 			:to="{
@@ -37,7 +37,7 @@ export default {
 <style lang="sass" scoped>
 .character
 	width: 100%
-	max-height: 110px
+	height: 110px
 	padding-top: 5px
 	padding-bottom: 5px
 	padding-left: 5px
@@ -48,7 +48,7 @@ export default {
 
 	&__link
 		width: 100%
-		max-width: 80px
+		max-width: 60px
 		margin-right: 10px
 
 	&-image

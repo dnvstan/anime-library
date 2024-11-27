@@ -61,18 +61,18 @@ export default {}
 		flex-direction: column
 
 	&__content
-		margin-bottom: 15px
+		margin-bottom: 20px
 		display: flex
 		align-items: center
 
 	&__logo
 		margin-right: 5px
 		display: block
-		font-family: 'Akaya-Telivigala'
+		font-family: 'Fredoka-SemiBold'
 		font-size: 24px
 		line-height: .9
 		text-decoration: none
-		color: #000
+		color: $dark-black-color
 
 	&__links-list
 		width: 100%
@@ -105,16 +105,16 @@ export default {}
 			font-size: 14px
 
 	&__copyright
-		font-size: 14px
+		margin-bottom: 5px
+		font-family: 'Fredoka-Light'
+		font-size: 15px
 		text-align: center
 
 		@media (max-width: $screen-s-max)
-			font-size: 12px
+			font-size: 13px
 
 	&__recaptcha
-		font-size: 12px
+		font-family: 'Fredoka-Light'
+		font-size: 13px
 		text-align: center
-
-		@media (max-width: $screen-s-max)
-			font-size: 10px
 </style>

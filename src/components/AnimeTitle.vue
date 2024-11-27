@@ -1,8 +1,8 @@
 <template>
 	<transition name="title" appear>
-		<h2 class="anime-title" v-show="animeTitle">
+		<h1 class="anime-title" v-show="animeTitle">
 			{{ animeTitle }}
-		</h2>
+		</h1>
 	</transition>
 </template>
 
@@ -26,8 +26,8 @@ export default {
 <style lang="sass" scoped>
 .anime-title
 	margin-top: 0
-	margin-bottom: 25px
-	font-size: 24px
+	margin-bottom: 20px
+	font-size: 26px
 	font-weight: 800
 
 	@media (max-width: $screen-xs-max)

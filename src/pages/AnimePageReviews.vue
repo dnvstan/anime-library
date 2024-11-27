@@ -1,31 +1,20 @@
 <template>
-	<template-anime-page>
-		<template v-slot:title> Reviews </template>
-		<template v-slot:mainContent>
-			<transition-group
-				class="reviews__list"
-				name="reviews-list"
-				tag="ul"
-				appear
-			>
-				<reviews-page-item
-					v-for="review in reviewsArray"
-					:key="review.mal_id"
-					:review="review"
-				/>
-			</transition-group>
-		</template>
-	</template-anime-page>
+	<h2 class="reviews__title">Reviews</h2>
+	<transition-group class="reviews__list" name="reviews-list" tag="ul" appear>
+		<ReviewsPageItem
+			v-for="review in reviewsArray"
+			:key="review.mal_id"
+			:review="review"
+		/>
+	</transition-group>
 </template>
 
 <script>
-import TemplateAnimePage from '@/components/TemplateAnimePage.vue'
 import ReviewsPageItem from '@/components/ReviewsPageItem.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
 	components: {
-		TemplateAnimePage,
 		ReviewsPageItem,
 	},
 
@@ -56,14 +45,18 @@ export default {
 	margin-bottom: 0
 	list-style: none
 
+.reviews__title
+	margin-top: 0
+	margin-bottom: 10px
+
 .reviews-list-enter-from
 	opacity: 0
-	transform: translateX(50%)
+	transform: scaleY(0.6)
 
 .reviews-list-enter-to
 	opacity: 1
-	transform: translateX(0)
+	transform: scaleY(1)
 
 .reviews-list-enter-active
-	transition: all .5s ease
+	transition: all .4s ease
 </style>

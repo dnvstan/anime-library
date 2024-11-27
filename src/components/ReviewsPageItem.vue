@@ -18,6 +18,7 @@
 		</div>
 	</li>
 </template>
+
 <script>
 export default {
 	props: ['review'],
@@ -34,8 +35,7 @@ export default {
 			return text.substring(0, 350) + '...'
 		},
 
-		handleReadMoreButton(rev) {
-			console.log(rev)
+		handleReadMoreButton() {
 			this.isReadMoreClicked = !this.isReadMoreClicked
 			this.isReadMoreClicked
 				? (this.buttonContent = 'Read less')
@@ -44,13 +44,14 @@ export default {
 	},
 }
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 .reviews__item
 	padding-top: 15px
 	padding-bottom: 15px
 	padding-left: 10px
 	padding-right: 10px
 	display: flex
+	align-items: flex-start
 
 	&:not(:last-child)
 		border-bottom: 2px solid #a3a3a3
@@ -59,8 +60,8 @@ export default {
 		background-color: #ebebeb
 
 	&__image
-		max-width: 60px
 		width: 100%
+		max-width: 60px
 		margin-right: 10px
 		object-fit: contain
 		object-position: top

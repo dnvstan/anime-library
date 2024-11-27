@@ -1,38 +1,30 @@
 <template>
-	<template-anime-page>
-		<template v-slot:title> Characters </template>
-		<template v-slot:mainContent>
-			<transition-group
-				class="characters__list"
-				tag="ul"
-				name="characters-list"
-				appear
-			>
-				<characters-list-item
-					v-for="char in charactersArray"
-					:key="char.character.mal_id"
-					:char="char"
-				/>
-			</transition-group>
-		</template>
-	</template-anime-page>
+	<h2 class="characters__title">Characters</h2>
+	<transition-group
+		class="characters__list"
+		tag="ul"
+		name="characters-list"
+		appear
+	>
+		<CharactersListItem
+			v-for="char in charactersArray"
+			:key="char.character.mal_id"
+			:char="char"
+		/>
+	</transition-group>
 </template>
 
 <script>
-import TemplateAnimePage from '@/components/TemplateAnimePage.vue'
-import AnimePageSidebar from '@/components/AnimePageSidebar.vue'
 import CharactersListItem from '@/components/CharactersListItem.vue'
 import { mapState, mapActions } from 'vuex'
 
 export default {
 	components: {
-		TemplateAnimePage,
-		AnimePageSidebar,
 		CharactersListItem,
 	},
 
 	created() {
-		if (this.charactersArray === []) {
+		if (this.charactersArray.length === 0) {
 			this.getCharacters(this.$route.params.animeId)
 		}
 	},
@@ -52,6 +44,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.characters__title
+	margin-top: 0
+	margin-bottom: 10px
+
 .characters__list
 	width: 100%
 	padding-left: 0
@@ -63,11 +59,11 @@ export default {
 
 .characters-list-enter-from
 	opacity: 0
-	transform: scale(0.6)
+	transform: translateX(100px)
 
 .characters-list-enter-to
 	opacity: 1
-	transform: scale(1)
+	transform: translateX(0)
 
 .characters-list-enter-active
 	transition: all .4s ease

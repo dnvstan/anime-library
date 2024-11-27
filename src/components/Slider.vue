@@ -8,7 +8,9 @@
 		:rewind="true"
 	>
 		<swiper-slide v-for="card in contentArr" :key="card.mal_id">
-			<slot :card="card" />
+			<transition name="slider-card" appear>
+				<slot :card="card" />
+			</transition>
 		</swiper-slide>
 	</swiper>
 </template>
@@ -24,7 +26,10 @@ export default {
 		SwiperSlide,
 	},
 	props: {
-		contentArr: Array,
+		contentArr: {
+			type: Array,
+			required: true,
+		},
 	},
 	data() {
 		return {
@@ -47,10 +52,16 @@ export default {
 
 <style lang="sass" scoped>
 .slider__container
-	max-width: 1200px
-	padding-left: 10px
-	padding-right: 10px
+	max-width: $content-width
 
-	.swiper-button-next
-		background-color: red
+.slider-card-enter-from
+	opacity: 0
+	transform: scaleX(0.6)
+
+.slider-card-enter-to
+	opacity: 1
+	transform: scaleX(1)
+
+.slider-card-enter-active
+	transition: 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both
 </style>

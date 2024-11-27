@@ -1,23 +1,25 @@
 <template>
 	<router-link
 		class="card"
-		:to="{ name: 'AnimePage', params: { animeId: animeCard.mal_id } }"
+		:to="{ name: 'AnimePageMain', params: { animeId: animeCard.mal_id } }"
 	>
 		<img
+			v-show="Object.keys(animeCard).length"
 			class="card__image"
 			:src="animeCard.images.jpg.image_url"
 			:alt="cardTitle ?? 'Anime poster'"
 		/>
 		<div class="card__info">
-			<h4 class="card__title">
+			<div class="card__title">
 				{{ cardTitle }}
-			</h4>
+			</div>
 			<div class="card__episodes">
 				{{ cardEpisodes }}
 			</div>
 		</div>
 	</router-link>
 </template>
+
 <script>
 export default {
 	props: {
@@ -54,8 +56,8 @@ export default {
 	transition: all .2s ease
 
 	&:hover
-		box-shadow: 4px 4px 15px 2px rgba(34, 60, 80, 0.2)
-		opacity: .8
+		opacity: .85
+		box-shadow: -12px 0 20px -12px rgba(0, 0, 0, 0.35), 12px 0 20px -12px rgba(0, 0, 0, 0.35)
 
 	&__image
 		height: 200px
@@ -76,6 +78,7 @@ export default {
 		margin-top: 0
 		margin-bottom: 5px
 		color: $dark-black-color
+		font-weight: 700
 		white-space: nowrap
 		text-overflow: ellipsis
 		overflow: hidden

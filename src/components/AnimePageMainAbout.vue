@@ -1,7 +1,7 @@
 <template>
-	<section class="about">
-		<anime-page-section-title>About</anime-page-section-title>
-		<p class="about__text" v-show="currentAnime.synopsis">
+	<section class="about" v-show="currentAnime.synopsis">
+		<AnimePageMainSectionTitle>About</AnimePageMainSectionTitle>
+		<p class="about__text">
 			{{ isReadMoreClicked ? textAbout : shortTextAbout }}
 		</p>
 		<button
@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import AnimePageSectionTitle from '@/components/AnimePageSectionTitle.vue'
+import AnimePageMainSectionTitle from '@/components/AnimePageMainSectionTitle.vue'
 import { mapState } from 'vuex'
 
 export default {
 	components: {
-		AnimePageSectionTitle,
+		AnimePageMainSectionTitle,
 	},
 
 	data() {
@@ -35,7 +35,7 @@ export default {
 		}),
 
 		textAbout() {
-			return this.currentAnime.synopsis || ''
+			return this.currentAnime.synopsis ?? ''
 		},
 
 		shortTextAbout() {
@@ -55,7 +55,7 @@ export default {
 		margin-bottom: 15px
 
 	&__text
-		margin-top: 5px
+		margin-top: 10px
 		margin-bottom: 10px
 
 	&__button

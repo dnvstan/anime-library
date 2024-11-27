@@ -1,20 +1,20 @@
 <template>
-	<aside class="sidebar">
+	<aside class="sidebar" v-show="Object.keys(animeInfo).length">
 		<transition name="sidebar-image" appear>
 			<img
 				class="sidebar-image"
-				v-show="animeInfo.animeImage"
+				v-if="animeInfo.animeImage"
 				:src="animeInfo.animeImage"
 				:alt="animeInfo.animeImageAlt ?? 'Anime image'"
 			/>
 		</transition>
 		<div class="sidebar__wrapper">
-			<anime-title />
+			<AnimeTitle />
 			<transition-group
 				class="sidebar__list"
+				tag="ul"
 				name="sidebar-list"
 				appear
-				tag="ul"
 			>
 				<li
 					class="sidebar__item"
@@ -25,18 +25,25 @@
 					{{ cat.value }}
 				</li>
 			</transition-group>
-			<a class="sidebar__trailer-link" :href="trailer.url" target="_blank">
-				Watch Trailer
-				<svg
-					class="sidebar__trailer-link__icon"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 512 512"
+			<transition name="trailer-link" appear>
+				<a
+					v-if="trailer.url"
+					class="sidebar__trailer-link"
+					:href="trailer.url"
+					target="_blank"
 				>
-					<path
-						d="M188.3 147.1C195.8 142.8 205.1 142.1 212.5 147.5L356.5 235.5C363.6 239.9 368 247.6 368 256C368 264.4 363.6 272.1 356.5 276.5L212.5 364.5C205.1 369 195.8 369.2 188.3 364.9C180.7 360.7 176 352.7 176 344V167.1C176 159.3 180.7 151.3 188.3 147.1V147.1zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
-					/>
-				</svg>
-			</a>
+					Watch Trailer
+					<svg
+						class="sidebar__trailer-link__icon"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 512 512"
+					>
+						<path
+							d="M188.3 147.1C195.8 142.8 205.1 142.1 212.5 147.5L356.5 235.5C363.6 239.9 368 247.6 368 256C368 264.4 363.6 272.1 356.5 276.5L212.5 364.5C205.1 369 195.8 369.2 188.3 364.9C180.7 360.7 176 352.7 176 344V167.1C176 159.3 180.7 151.3 188.3 147.1V147.1zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
+						/>
+					</svg>
+				</a>
+			</transition>
 		</div>
 	</aside>
 </template>
@@ -83,13 +90,13 @@ export default {
 		width: 100%
 		margin-bottom: 15px
 		flex-direction: row
-		justify-content: center
+		align-items: flex-start
 
 	&-image
 		width: 100%
 		margin-bottom: 10px
 		display: block
-		object-fit: cover
+		object-fit: contain
 		object-position: center
 		border-radius: 5px
 
@@ -121,6 +128,7 @@ export default {
 		display: flex
 		align-items: center
 		justify-content: center
+		border: 2px solid $light-black-color
 		background-color: $main-color
 		color: #000
 		text-decoration: none
@@ -136,7 +144,8 @@ export default {
 			transition: all .3s ease
 
 .sidebar-image-enter-active,
-.sidebar-list-enter-active
+.sidebar-list-enter-active,
+trailer-link-enter-active
 	transition: all .4s ease
 
 .sidebar-image-enter-from
@@ -154,4 +163,12 @@ export default {
 .sidebar-list-enter-to
 	opacity: 1
 	transform: scale(1)
+
+.trailer-link-enter-from
+	opacity: 0
+	transform: translateY(200%)
+
+.trailer-link-enter-to
+	opacity: 1
+	transform: translateY(0)
 </style>
